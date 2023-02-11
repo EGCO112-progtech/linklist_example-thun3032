@@ -50,7 +50,7 @@ int main( void )
             scanf( "%d", &item_data );
             insert( &startPtr, item_id , item_name , item_data); // insert item in list
             printList( startPtr );
-            //reverseList( startPtr );
+            reverseList( startPtr );
             break;
          case 2: // delete an element
             // if list is not empty
@@ -62,7 +62,7 @@ int main( void )
                if ( deletes( &startPtr, item_id ) ) { // remove item
                   printf( "ID %d deleted.\n", item_id );
                   printList( startPtr );
-                  //reverseList( startPtr );
+                  reverseList( startPtr );
                } // end if
                else {
                   printf( "ID %d not found.\n\n", item_id );
@@ -206,11 +206,6 @@ void printList( LLPtr currentPtr )
          printf( "--------------------\n");
          currentPtr = currentPtr->nextPtr;   
       } // end while
-
-      printf( "%d --> NULL\n",currentPtr->data );
-       
-
-     
        
    } // end else
 } // end function printList
@@ -228,12 +223,15 @@ void reverseList( LLPtr currentPtr )
       while ( currentPtr->nextPtr!= NULL ){
          currentPtr = currentPtr->nextPtr;
       }
-      while ( currentPtr->pPtr!= NULL ) {
-         printf( "%d --> ", currentPtr->data );
+      // while not the end of the list
+      while ( currentPtr!= NULL ) {
+         printf( "\n--------------------\n");
+         printf( "ID : %d\n", currentPtr->id );
+         printf( "Name : %s\n", currentPtr->name );
+         printf( "Data : %d\n", currentPtr->data );
+         printf( "--------------------\n");
          currentPtr = currentPtr->pPtr;   
-      } // end while
-
-      printf( "%d --> NULL\n",currentPtr->data );
+      } // end while // end while
    } // end else
 } // end function printList
 
